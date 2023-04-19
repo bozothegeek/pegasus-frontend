@@ -38,45 +38,35 @@ class Assets : public QObject {
     Q_OBJECT
 
 public:
-    const std::array<QString, 1> MEDIA_DIRS {
+    const std::array<QString, 3> MEDIA_DIRS {
         QStringLiteral("/media/"),
+        QStringLiteral("/medias/"),
+        QStringLiteral("/skraper/"),
     };
 
     // NOTE: The entries are ordered by priority
     const HashMap<AssetType, QStringList, EnumHash> ASSET_DIRS {
+        // multi posibility
         { AssetType::ARCADE_MARQUEE, {
             QStringLiteral("marquee"),
             QStringLiteral("screenmarquee"),
             QStringLiteral("screenmarqueesmall"),
             QStringLiteral("steamgrid"),
         }},
-        { AssetType::ARCADE_BEZEL, {
-            QStringLiteral("bezel"),
-        }},
         { AssetType::BACKGROUND, {
             QStringLiteral("fanart"),
             QStringLiteral("screenshot"),
-        }},
-        { AssetType::BOX_BACK, {
-            QStringLiteral("box2dback"),
+            QStringLiteral("image"),
+            QStringLiteral("images"),
         }},
         { AssetType::BOX_FRONT, {
             QStringLiteral("box3d"),
             QStringLiteral("support"),
+            QStringLiteral("boxfront"),
+            QStringLiteral("boxFront"),
             QStringLiteral("box2dfront"),
             QStringLiteral("supporttexture"),
-        }},
-        { AssetType::BOX_FULL, {
-            QStringLiteral("boxtexture"),
-        }},
-        { AssetType::BOX_SPINE, {
-            QStringLiteral("box2dside"),
-        }},
-        { AssetType::CARTRIDGE, {
-            QStringLiteral("support"),
-        }},
-        { AssetType::CARTRIDGETEXTURE, {
-            QStringLiteral("supporttexture"),
+            QStringLiteral("thumbnail"),
         }},
         { AssetType::LOGO, {
             QStringLiteral("wheel"),
@@ -86,24 +76,131 @@ public:
         { AssetType::SCREENSHOT, {
             QStringLiteral("screenshot"),
             QStringLiteral("screenshottitle"),
+            QStringLiteral("image"),
+            QStringLiteral("images"),
         }},
+
+        // solo posibility
+        // for tag <bezels></bezels>
+        { AssetType::ARCADE_BEZEL, {
+            QStringLiteral("bezel"), // specific with arrm
+            QStringLiteral("bezels"), // specific with arrm
+        }},
+        // for tag <box2dback></box2dback>
+        { AssetType::BOX_BACK, {
+            QStringLiteral("boxback"),
+            QStringLiteral("boxBack"),
+            QStringLiteral("box2dback"),
+        }},
+        // for tag <box2dfront></box2dfront>
+        { AssetType::BOX_2DFRONT, {    
+            QStringLiteral("boxfront"),
+            QStringLiteral("boxFront"),
+            QStringLiteral("box2dfront"),
+        }},
+        // for tag <box2dside></box2dside>
+        { AssetType::BOX_SPINE, {
+            QStringLiteral("boxside"),
+            QStringLiteral("boxSide"),
+            QStringLiteral("box2dside"),
+        }},
+        // for tag <box3d></box3d>
+        { AssetType::BOX_3DFRONT, {
+            QStringLiteral("box3d"),
+        }},
+        // for tag <boxtexture></boxtexture>
+        { AssetType::BOX_FULL, {
+            QStringLiteral("boxfull"),
+            QStringLiteral("boxFull"),
+            QStringLiteral("boxtexture"),
+        }},
+        // for tag <extra1></extra1>
+        { AssetType::EXTRA1, {
+            QStringLiteral("extra1"), // flyer specific with arrm
+        }},
+        // for tag <fanart></fanart>
+        { AssetType::FANART, {
+            QStringLiteral("fanart"),
+        }},
+        // for tag <images></images>
+        { AssetType::IMAGES, {
+            QStringLiteral("image"),
+            QStringLiteral("images"),
+        }},
+        // for tag <manuals></manuals>
+        { AssetType::MANUAL, {
+            QStringLiteral("manual"),
+            QStringLiteral("manuals"),
+        }},
+        // for tag <map></map>
+        { AssetType::MAPS, {
+            QStringLiteral("map"),
+            QStringLiteral("maps"),            
+        }},
+        // for tag <marquee></marquee>
+        { AssetType::MARQUEE, {
+            QStringLiteral("marquee"),
+        }},
+        // for tag <mix></mix>
+        { AssetType::MIX, {
+            QStringLiteral("mix"), // specific with arrm
+        }},
+        // for tag <music></music>
+        { AssetType::MUSIC, {
+            QStringLiteral("music"), // specific with arrm
+        }},
+        // for tag <screenmarquee></screenmarquee>
+        { AssetType::SCREEN_MARQUEE, {  
+            QStringLiteral("screenmarquee"),
+        }},
+        // for tag <screenmarqueesmall></screenmarqueesmall>
+        { AssetType::SCREEN_MARQUEESMALL, {      
+            QStringLiteral("screenmarqueesmall"),
+        }},
+        // for tag <screenshot></screenshot>
+        { AssetType::SCREENSHOT_BIS, {
+            QStringLiteral("screenshot"),
+        }},
+        // for tag <screenshottitle></screenshottitle>
         { AssetType::TITLESCREEN, {
             QStringLiteral("screenshottitle"),
         }},
+        // for tag <steamgrid></steamgrid>
         { AssetType::UI_STEAMGRID, {
             QStringLiteral("steamgrid"),
         }},
+        // for tag <support></support>
+        { AssetType::CARTRIDGE, {
+            QStringLiteral("support"),
+        }},
+        // for tag <supporttexture></supporttexture>
+        { AssetType::CARTRIDGETEXTURE, {
+            QStringLiteral("supporttexture"),
+        }},
+        // for tag <thumbnail></thumbnail>
+        { AssetType::THUMBNAIL, {
+            QStringLiteral("thumbnail"),
+        }},
+        // for tag <videos></videos>
         { AssetType::VIDEO, {
+            QStringLiteral("video"),
             QStringLiteral("videos"),
         }},
-        { AssetType::MANUAL, {
-            QStringLiteral("manuals"),
+        // for tag <videomix></videomix>
+        { AssetType::VIDEOMIX, {
+            QStringLiteral("videomix"), // specific with arrm
         }},
-        { AssetType::MAPS, {
-            QStringLiteral("maps"),
+        // for tag <wheel></wheel>
+        { AssetType::WHEEL, {
+            QStringLiteral("wheel"),
         }},
-        { AssetType::MUSIC, {
-            QStringLiteral("music"),
+        // for tag <wheelcarbon></wheelcarbon>
+        { AssetType::WHEEL_CARBON, {
+            QStringLiteral("wheelcarbon"),
+        }},
+        // for tag <wheelsteel></wheelsteel>
+        { AssetType::WHEEL_STEEL, {         
+            QStringLiteral("wheelsteel"),
         }},
     };
 
@@ -117,34 +214,91 @@ public:
     Q_PROPERTY(QString qmlname READ qmlname CONSTANT) \
     Q_PROPERTY(QStringList qmlname##List READ qmlname##List CONSTANT) \
 
-    GEN(boxFront, BOX_FRONT)
+    GEN(bezel, ARCADE_BEZEL)
+    GEN(bezels, ARCADE_BEZEL)
+
+    GEN(boxback, BOX_BACK)
     GEN(boxBack, BOX_BACK)
-    GEN(boxSpine, BOX_SPINE)
+    GEN(box2dback, BOX_BACK)
+
+    GEN(boxfront, BOX_FRONT)
+    GEN(boxFront, BOX_FRONT)
+    GEN(box2dfront, BOX_FRONT)
+    
+    GEN(boxSpine, BOX_SPINE) // = box2dside
+    GEN(box2dside, BOX_SPINE) // = box2dside
+    
+    GEN(box3d, BOX_3DFRONT)
+
+    GEN(boxfull, BOX_FULL)
     GEN(boxFull, BOX_FULL)
-    GEN(cartridge, CARTRIDGE)
-    GEN(cartridgetexture, CARTRIDGETEXTURE)
-    GEN(logo, LOGO)
-    GEN(poster, POSTER)
+    GEN(boxtexture, BOX_FULL)
+    
+    GEN(extra1, EXTRA1)
+
+    GEN(fanart, FANART)
+
+    GEN(image, IMAGES)
+    GEN(images, IMAGES)
+
+    GEN(manual, MANUAL)
+    GEN(manuals, MANUAL)
+
+    GEN(map, MAPS)
+    GEN(maps, MAPS)
 
     GEN(marquee, ARCADE_MARQUEE)
-    GEN(bezel, ARCADE_BEZEL)
-    GEN(panel, ARCADE_PANEL)
-    GEN(cabinetLeft, ARCADE_CABINET_L)
-    GEN(cabinetRight, ARCADE_CABINET_R)
+    GEN(marquees, MARQUEE)
 
-    GEN(tile, UI_TILE)
-    GEN(banner, UI_BANNER)
-    GEN(steam, UI_STEAMGRID)
-    GEN(background, BACKGROUND)
+    GEN(mix, MIX)
+
     GEN(music, MUSIC)
 
-    GEN(screenshot, SCREENSHOT)
-    GEN(titlescreen, TITLESCREEN)
-    GEN(video, VIDEO)
+    GEN(screenmarquee, SCREEN_MARQUEE)
     
-    GEN(manual,MANUAL)
+    GEN(screenmarqueesmall, SCREEN_MARQUEESMALL)
+    
+    GEN(screenshot, SCREENSHOT)
+    GEN(screenshot_bis, SCREENSHOT_BIS)
+    GEN(background, BACKGROUND)
+    
+    GEN(titlescreen, TITLESCREEN)
+    GEN(screenshottitle, TITLESCREEN)
 
-    GEN(maps,MAPS)
+    GEN(steam, UI_STEAMGRID)
+    GEN(steamgrid, UI_STEAMGRID)
+
+    GEN(support, CARTRIDGE)
+    GEN(cartridge, CARTRIDGE)
+    
+    GEN(supporttexture, CARTRIDGETEXTURE)
+    GEN(cartridgetexture, CARTRIDGETEXTURE)
+
+    GEN(thumbnail, THUMBNAIL)
+
+    GEN(video, VIDEO)
+    GEN(videos, VIDEO)
+
+    GEN(videomix, VIDEOMIX)
+
+    GEN(wheel, WHEEL)
+    GEN(logo, LOGO)
+    
+    GEN(wheelcarbon, WHEEL_CARBON)
+    
+    GEN(wheelsteel, WHEEL_STEEL)
+    
+    GEN(poster, POSTER)
+
+    GEN(panel, ARCADE_PANEL)
+    
+    GEN(cabinetLeft, ARCADE_CABINET_L)
+    GEN(cabinetRight, ARCADE_CABINET_R)
+    
+    GEN(banner, UI_BANNER)
+
+    GEN(tile, UI_TILE)
+
 #undef GEN
 
     // deprecated fallacks

@@ -29,38 +29,118 @@ namespace pegasus_assets {
 AssetType str_to_type(const QString& str)
 {
     static const HashMap<QString, const AssetType> map {
+        { QStringLiteral("marquee"), AssetType::ARCADE_MARQUEE },
+        { QStringLiteral("screenmarquee"), AssetType::ARCADE_MARQUEE },
+        { QStringLiteral("screenmarqueesmall"), AssetType::ARCADE_MARQUEE },
+        { QStringLiteral("steamgrid"), AssetType::ARCADE_MARQUEE },
+
+        { QStringLiteral("boxback"), AssetType::BOX_BACK },
+        { QStringLiteral("boxBack"), AssetType::BOX_BACK },
+        { QStringLiteral("box_back"), AssetType::BOX_BACK },
+        { QStringLiteral("box2dback"), AssetType::BOX_BACK },
+
+        { QStringLiteral("background"), AssetType::BACKGROUND },
+        { QStringLiteral("fanart"), AssetType::BACKGROUND },
+        { QStringLiteral("screenshot"), AssetType::BACKGROUND },
+        { QStringLiteral("image"), AssetType::BACKGROUND },
+        { QStringLiteral("images"), AssetType::BACKGROUND },
+        
+        { QStringLiteral("box3d"), AssetType::BOX_FRONT },
+        { QStringLiteral("support"), AssetType::BOX_FRONT },
         { QStringLiteral("boxfront"), AssetType::BOX_FRONT },
         { QStringLiteral("boxFront"), AssetType::BOX_FRONT },
         { QStringLiteral("box_front"), AssetType::BOX_FRONT },
         { QStringLiteral("boxart2D"), AssetType::BOX_FRONT },
         { QStringLiteral("boxart2d"), AssetType::BOX_FRONT },
+        { QStringLiteral("box2dfront"), AssetType::BOX_FRONT },
+        { QStringLiteral("supporttexture"), AssetType::BOX_FRONT },
+        { QStringLiteral("thumbnail"), AssetType::BOX_FRONT },
+        
+        { QStringLiteral("logo"), AssetType::LOGO },
+        { QStringLiteral("wheel"), AssetType::LOGO },
+        { QStringLiteral("wheelcarbon"), AssetType::LOGO },
+        { QStringLiteral("wheelsteel"), AssetType::LOGO },
 
-        { QStringLiteral("boxback"), AssetType::BOX_BACK },
-        { QStringLiteral("boxBack"), AssetType::BOX_BACK },
-        { QStringLiteral("box_back"), AssetType::BOX_BACK },
+        { QStringLiteral("screenshot"), AssetType::SCREENSHOT },
+        { QStringLiteral("screenshots"), AssetType::SCREENSHOT },
+        { QStringLiteral("image"), AssetType::SCREENSHOT },
+        { QStringLiteral("images"), AssetType::SCREENSHOT },
+
+        { QStringLiteral("bezel"), AssetType::ARCADE_BEZEL },
+        { QStringLiteral("bezels"), AssetType::ARCADE_BEZEL },
+        { QStringLiteral("screenmarquee"), AssetType::ARCADE_BEZEL },
+        { QStringLiteral("border"), AssetType::ARCADE_BEZEL },
+
+        { QStringLiteral("boxfront"), AssetType::BOX_2DFRONT },
+        { QStringLiteral("boxFront"), AssetType::BOX_2DFRONT },
+        { QStringLiteral("box2dfront"), AssetType::BOX_2DFRONT },
 
         { QStringLiteral("boxspine"), AssetType::BOX_SPINE },
         { QStringLiteral("boxSpine"), AssetType::BOX_SPINE },
         { QStringLiteral("box_spine"), AssetType::BOX_SPINE },
-
         { QStringLiteral("boxside"), AssetType::BOX_SPINE },
         { QStringLiteral("boxSide"), AssetType::BOX_SPINE },
         { QStringLiteral("box_side"), AssetType::BOX_SPINE },
+        { QStringLiteral("box2dside"), AssetType::BOX_SPINE },
+
+        { QStringLiteral("box3d"), AssetType::BOX_3DFRONT },
 
         { QStringLiteral("boxfull"), AssetType::BOX_FULL },
         { QStringLiteral("boxFull"), AssetType::BOX_FULL },
         { QStringLiteral("box_full"), AssetType::BOX_FULL },
+        { QStringLiteral("boxtexture"), AssetType::BOX_FULL },
         { QStringLiteral("box"), AssetType::BOX_FULL },
 
+        { QStringLiteral("extra1"), AssetType::EXTRA1 },
+
+        { QStringLiteral("fanart"), AssetType::FANART },
+
+        { QStringLiteral("image"), AssetType::IMAGES },
+        { QStringLiteral("images"), AssetType::IMAGES },
+
+        { QStringLiteral("manual"), AssetType::MANUAL },
+        { QStringLiteral("manuals"), AssetType::MANUAL },
+
+        { QStringLiteral("map"), AssetType::MAPS },
+        { QStringLiteral("maps"), AssetType::MAPS },
+
+        { QStringLiteral("marquee"), AssetType::MARQUEE },
+
+        { QStringLiteral("mix"), AssetType::MIX },
+
+        { QStringLiteral("music"), AssetType::MUSIC },
+
+        { QStringLiteral("screenmarquee"), AssetType::SCREEN_MARQUEE },
+        
+        { QStringLiteral("screenmarqueesmall"), AssetType::SCREEN_MARQUEESMALL },
+
+        { QStringLiteral("screenshot"), AssetType::SCREENSHOT_BIS },
+
+        { QStringLiteral("screenshottitle"), AssetType::TITLESCREEN },
+        { QStringLiteral("titlescreen"), AssetType::TITLESCREEN },
+
+        { QStringLiteral("steam"), AssetType::UI_STEAMGRID },
+        { QStringLiteral("steamgrid"), AssetType::UI_STEAMGRID },
+        { QStringLiteral("grid"), AssetType::UI_STEAMGRID },
+
+        { QStringLiteral("support"), AssetType::CARTRIDGE },
         { QStringLiteral("cartridge"), AssetType::CARTRIDGE },
         { QStringLiteral("disc"), AssetType::CARTRIDGE },
         { QStringLiteral("cart"), AssetType::CARTRIDGE },
-        { QStringLiteral("logo"), AssetType::LOGO },
-        { QStringLiteral("wheel"), AssetType::LOGO },
-        { QStringLiteral("marquee"), AssetType::ARCADE_MARQUEE },
-        { QStringLiteral("bezel"), AssetType::ARCADE_BEZEL },
-        { QStringLiteral("screenmarquee"), AssetType::ARCADE_BEZEL },
-        { QStringLiteral("border"), AssetType::ARCADE_BEZEL },
+
+        { QStringLiteral("supporttexture"), AssetType::CARTRIDGETEXTURE },
+
+        { QStringLiteral("thumbnail"), AssetType::THUMBNAIL },
+
+        { QStringLiteral("video"), AssetType::VIDEO },
+        { QStringLiteral("videos"), AssetType::VIDEO },
+
+        { QStringLiteral("videomix"), AssetType::VIDEOMIX },
+
+        { QStringLiteral("wheel"), AssetType::WHEEL },
+        { QStringLiteral("wheelcarbon"), AssetType::WHEEL_CARBON },
+        { QStringLiteral("wheelsteel"), AssetType::WHEEL_STEEL },
+
         { QStringLiteral("panel"), AssetType::ARCADE_PANEL },
 
         { QStringLiteral("cabinetleft"), AssetType::ARCADE_CABINET_L },
@@ -73,23 +153,9 @@ AssetType str_to_type(const QString& str)
 
         { QStringLiteral("tile"), AssetType::UI_TILE },
         { QStringLiteral("banner"), AssetType::UI_BANNER },
-        { QStringLiteral("steam"), AssetType::UI_STEAMGRID },
-        { QStringLiteral("steamgrid"), AssetType::UI_STEAMGRID },
-        { QStringLiteral("grid"), AssetType::UI_STEAMGRID },
+
         { QStringLiteral("poster"), AssetType::POSTER },
-        { QStringLiteral("flyer"), AssetType::POSTER },
-        { QStringLiteral("background"), AssetType::BACKGROUND },
-        { QStringLiteral("music"), AssetType::MUSIC },
-
-        { QStringLiteral("screenshot"), AssetType::SCREENSHOT },
-        { QStringLiteral("screenshots"), AssetType::SCREENSHOT },
-        { QStringLiteral("video"), AssetType::VIDEO },
-        { QStringLiteral("videos"), AssetType::VIDEO },
-        { QStringLiteral("titlescreen"), AssetType::TITLESCREEN },
-
-        { QStringLiteral("manuals"), AssetType::MANUAL },
-
-        { QStringLiteral("maps"), AssetType::MAPS },
+        { QStringLiteral("flyer"), AssetType::POSTER },        
     };
 
     const auto it = map.find(str);
